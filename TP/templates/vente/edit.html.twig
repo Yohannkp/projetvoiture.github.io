@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block act1 %}{% endblock %}
+{% block act2 %}active has-sub{% endblock %}
+{% block act3 %}{% endblock %}
+{% block act4 %}{% endblock %}
+{% block act5 %}{% endblock %}
+{% block username %}{{username}}{% endblock %}
+{% block password %}{{username}}{% endblock %}
+{% block Tel %}{{tel}}{% endblock %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header">
+    <h1>Modifier une vente</h1>
+
+{{form_start(form)}}
+{{form_row(form.voiture)}}
+{{form_row(form.client)}}
+{{form_row(form.dateVente)}}
+{{form_row(form.Montant)}}
+    <button type="submit" class="btn btn-success">Valider</button>
+{{form_end(form)}}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

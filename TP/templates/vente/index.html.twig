@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VenteController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="page-wrapper">
+    <div class="page-container">
+    <div class="main-content">
+        
+        <div class="section__content section__content--p30">
+        <div class="container-fluid">
+        <form action="{{path('recherchevente')}}" method="post">
+        <input type ="date" name="Debut"> 
+        <input type="date" name = "Fin">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="row">
+        <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header">
+    <h1>Liste des ventes effectuées</h1>
+    <table class="table">
+        <tr>
+        <th>Client</th>
+        <th>Voiture</th>
+        <th>Date d'achat</th>
+        <th>Montant versé</th>
+        <th>Actions</th>
+        </tr>
+        {% for vente in ventes %}
+        <tr>
+            <td>{{vente.client.nom}}</td>
+            <td>{{vente.voiture.Marque}}</td>
+            <td>{{vente.dateVente ? vente.dateVente|date('Y-m-d') : '' }}</td>
+            <td>{{vente.Montant}}</td>
+            <td><a href="{{path('editVente',{'id': vente.id })}}" class="btn btn-warning">Modifier</a><a href="{{path('voire_vente',{'id': vente.id })}}" class="btn btn-success">Voire</a></td>
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+    <a href="{{path('newVente')}}" class="btn btn-primary">Enregistrer un nouvelle vente</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block act1 %}{% endblock %}
+{% block act2 %}active has-sub{% endblock %}
+{% block act3 %}{% endblock %}
+{% block act4 %}{% endblock %}
+{% block act5 %}{% endblock %}
+{% block username %}{{username}}{% endblock %}
+{% block password %}{{username}}{% endblock %}
+{% block Tel %}{{tel}}{% endblock %}

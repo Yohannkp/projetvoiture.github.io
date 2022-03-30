@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+{% block username %}{{username}}{% endblock %}
+{% block password %}{{username}}{% endblock %}
+{% block Tel %}{{tel}}{% endblock %}
+{% block act1 %}{% endblock %}
+{% block act2 %}{% endblock %}
+{% block act3 %}{% endblock %}
+{% block act4 %}active has-sub{% endblock %}
+{% block act5 %}{% endblock %}
+{% block controller %}{{path('verificationClient')}}{% endblock %}
+
+{% block erreur %}{{erreur}} {% endblock %}
+
+{% block body %}
+<div class="page-wrapper">
+    <div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header">
+    <h1 style="display:flex">Client index <div>
+        <form class="form-horizontal mx-2 col-md-5 d-flex p-2" action="{{path('verificationAge')}}"  method="post">
+          
+            <input type="date" name="Debut">
+          
+         
+            <input type="date" name="Fin">
+        
+            
+            <input type="submit" value="Valider" class="btn btn-primary">
+          </form>
+    </div></h1>
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>NomUtilisateur</th>
+                <th>Age</th>
+                <th>Cni</th>
+                <th>PhotoIdentite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.Nom }}</td>
+                <td>{{ client.Prenom }}</td>
+                <td>{{ client.Telephone }}</td>
+                <td>{{ client.nomUtilisateur }}</td>
+                
+                <td>{{ client.Age ? client.Age|date('Y-m-d') : '' }}</td>
+                <td>{{ client.Cni }}</td>
+                <td>{{ client.PhotoIdentite }}</td>
+                <td>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('app_client_edit', {'id': client.id}) }}" class="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_new') }}" class="btn btn-primary">Create new</a>
+    <a href="{{ path('ajout_admin')}}" class="btn btn-warning">Ajout d'un admin</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

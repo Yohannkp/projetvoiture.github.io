@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block username %}{{username}}{% endblock %}
+{% block password %}{{username}}{% endblock %}
+{% block Tel %}{{tel}}{% endblock %}
+{% block title %}Edit Voiture{% endblock %}
+
+{% block erreur %}{{erreur}}{% endblock %}
+
+{% block act1 %}active has-sub{% endblock %}
+{% block act2 %}{% endblock %}
+{% block act3 %}{% endblock %}
+{% block act4 %}{% endblock %}
+{% block act5 %}{% endblock %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="page-container">
+    <div class="main-content">
+        <div class="card">
+            <div class="card-header">
+                <h1>Editer une Voiture</h1>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <h3 class="text-center title-2">Modifications </h3>
+                </div>
+
+
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                <input type="submit" value='Envoyer' class="btn btn-success">
+                {{form_end(form)}}
+
+    <a href="{{ path('voiture_index') }}">back to list</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

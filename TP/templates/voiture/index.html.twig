@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block controller %}{{path('verificationVoiture')}}{% endblock %}
+{% block username %}{{username}}{% endblock %}
+{% block password %}{{username}}{% endblock %}
+{% block Tel %}{{tel}}{% endblock %}
+
+{% block title %}Voiture index{% endblock %}
+{% block erreur %}
+{{erreur}}
+{% endblock %}
+{% block act1 %}active has-sub{% endblock %}
+{% block act2 %}{% endblock %}
+{% block act3 %}{% endblock %}
+{% block act4 %}{% endblock %}
+{% block act5 %}{% endblock %}
+
+{% block body %}
+<div class="page-wrapper">
+    <div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header">
+        <h1>Liste des Voitures</h1>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <h3 class="text-center title-2">Liste</h3>
+                </div>
+    
+        <div class="table-responsive table-responsive-date2">
+    
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                
+                <th>Id</th>
+                <th>Marque</th>
+                <th>Modele</th>
+                <th>Numero_serie</th>
+                <th>NumeroId</th>
+                <th>Date_achat</th>
+                <th>Couleur</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+        
+            <tr>
+                <td>{{ voiture.id }}</td>
+                <td>{{ voiture.Marque }}</td>
+                <td>{{ voiture.Model }}</td>
+                <td>{{ voiture.NumSerie }}</td>
+                <td>{{ voiture.NumeroIdentifiant }}</td>
+                <td>{{ voiture.dateAchat ? voiture.dateAchat|date('Y-m-d') : '' }}</td>
+                <td>{{ voiture.Couleur }}</td>
+                <td>{{ voiture.Etat }}</td>
+                <td>
+                    <a name="" id="" class="btn btn-primary" href="{{ path('voiture_show', {'id': voiture.id}) }}" role="button">Voir</a>
+                    <a name="" id="" class="btn btn-warning" href="{{ path('voiture_edit', {'id': voiture.id}) }}" role="button">Edit</a>
+                </td>
+            </tr>
+        
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <a name="" id="" class="btn btn-primary" href="{{path('Ajout_voiture')}}" role="button">Ajouter une voiture</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block username %}{{username}}{% endblock %}
+{% block password %}{{username}}{% endblock %}
+{% block Tel %}{{tel}}{% endblock %}
+{% block title %}Voiture index{% endblock %}
+
+{% block erreur %}{{erreur}}{% endblock %}
+
+{% block body %}
+<div class="page-wrapper">
+    <div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header">
+        <h1>Liste des Voiture</h1>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <h3 class="text-center title-2">Liste</h3>
+                </div>
+    
+        <div class="table-responsive table-responsive-date2">
+    
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marque</th>
+                <th>Modele</th>
+                <th>Numero_serie</th>
+                <th>NumeroId</th>
+                <th>Date_achat</th>
+                <th>Couleur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for voiture in voitures %}
+        {% if matricule == voiture.Model %}
+            <tr>
+                <td>{{ voiture.id }}</td>
+                <td>{{ voiture.Marque }}</td>
+                <td>{{ voiture.Model }}</td>
+                <td>{{ voiture.NumSerie }}</td>
+                <td>{{ voiture.NumeroIdentifiant }}</td>
+                <td>{{ voiture.dateAchat ? voiture.dateAchat|date('Y-m-d') : '' }}</td>
+                <td>{{ voiture.Couleur }}</td>
+                <td>
+                    <a href="{{ path('voiture_show', {'id': voiture.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('voiture_edit', {'id': voiture.id}) }}" class="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <a href="{{path('Ajout_voiture')}}">Create new</a>
+    <a href="{{ path('voiture_index') }}">Retourner a la liste complète </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block act1 %}active has-sub{% endblock %}
+{% block act2 %}{% endblock %}
+{% block act3 %}{% endblock %}
+{% block act4 %}{% endblock %}
+{% block act5 %}{% endblock %}
