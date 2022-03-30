@@ -54,6 +54,15 @@ class ClientRepository extends ServiceEntityRepository
             ->getResult()
     ;
     }
+    
+    public function findByName($nom){
+        return $this->createQueryBuilder("s")
+            ->Where("s.NomUtilisateur LIKE ?1")
+            ->setParameter("1", "%$nom%")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
    
     // /**

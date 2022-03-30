@@ -168,16 +168,22 @@ class ClientController extends AbstractController
     #[Route('/recherche', name: 'verificationClient', methods: ['GET', 'POST'])]
     public function showMatricule(ClientRepository $clientRepository,RequestStack $requestStack): Response
     {
+        $session = $requestStack->getSession();
+        $username=$session->get('username');
+        $password = $session->get("password");
+        $tel = $session->get("Tel");
                 if(isset($_POST['search'])){
                     if(empty($_POST['search'])){
-                        $session = $requestStack->getSession();
-                        $username=$session->get('username');
-                        $password = $session->get("password");
-                        $tel = $session->get("Tel");
+                        
                         return $this->render("client/index.html.twig",['erreur' => "Entrer quelque chose s'il vous plait",'clients'=>$clientRepository->findAll(),"username" => $username,
                         "password" => $password,
                         "tel" => $tel,]);
                     }
+                    $recherche = $_POST['search'];
+                    $recherche = $clientRepository->findByName($recherche);
+                    return $this->render("client/index.html.twig",['erreur' => "Recherche d'un client",'clients'=>$recherche,"username" => $username,
+                        "password" => $password,
+                        "tel" => $tel,]);
                     
             }
                 
